@@ -1,0 +1,23 @@
+<header class="bg-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between py-6 lg:px-0 border-b" aria-label="Global">
+        <div class="flex lg:flex-1">
+            <a href="#" class="-m-1.5 p-1.5">
+                <span class="sr-only">ParkTips | Módulo de pruebas</span>
+                <img class="h-12 w-auto" src="assets/icons/logo2.png" alt="">
+            </a>
+        </div>
+
+        <div class="lg:flex lg:gap-x-12">
+            <a routerLink="/home" class="text-sm font-semibold leading-6 text-gray-900" [ngClass]="{'text-sky-600': isActive('/home')}">Inicio</a>
+            <a routerLink="/panelVoice" class="text-sm font-semibold leading-6 text-gray-900" [ngClass]="{'text-sky-600': isActive('/panelVoice')}">Voz</a>
+            <a routerLink="/panelDrawing" class="text-sm font-semibold leading-6 text-gray-900" [ngClass]="{'text-sky-600': isActive('/panelDrawing')}">Trazos</a>
+            <a class="text-sm font-semibold leading-6 text-gray-400">Movimiento</a>
+        </div>
+
+        <div class="lg:flex lg:flex-1 lg:justify-end">
+            <a href="#"
+                class="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-sky-600 text-white hover:bg-sky-500 -my-2.5 ml-8 shadow-lg shadow-sky-500/50">Salir
+                <span aria-hidden="true"> &rarr;</span></a>
+        </div>
+    </nav>
+</header>
