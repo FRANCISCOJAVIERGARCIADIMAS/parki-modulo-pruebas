@@ -10,6 +10,7 @@ import { CardComponent } from './components/card/card.component';
 import { PanelVoiceComponent } from './panel-voice/panel-voice.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PanelDrawingComponent } from './panel-drawing/panel-drawing.component';
+import { TooltipComponent } from './components/tooltip/tooltip.component';
 // import { CardComponent } from './components/card/card.component';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PanelDrawingComponent } from './panel-drawing/panel-drawing.component';
     CardComponent,
     PanelVoiceComponent,
     NavbarComponent,
-    PanelDrawingComponent
+    PanelDrawingComponent,
+    TooltipComponent
   ],
   imports: [
     BrowserModule,

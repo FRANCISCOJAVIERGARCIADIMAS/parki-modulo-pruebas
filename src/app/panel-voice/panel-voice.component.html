@@ -18,16 +18,18 @@
                 <div class="border-t border-gray-200">
                     <dl>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <dt class="text-lg font-medium text-gray-500 sm:col-span-1">PPE</dt>
+                            <app-tooltip [description]="'PPE - Medida lineal de variación de frecuencia fundamental'"
+                                [title]="'PPE'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
                                 <input [(ngModel)]="ppe" type="range" id="ppe" min="50" max="300" step="001" value="0"
                                     class="jv-input-range">
                             </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">0.{{ppe}}</dt>
+                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">0.{{ppe}} </dt>
 
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <dt class="text-lg font-medium text-gray-500 sm:col-span-1">MDVP:Fo</dt>
+                            <app-tooltip [description]="'MDVP:Fo - Frecuencia fundamental vocal mínima'"
+                                [title]="'MDVP:Fo'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
                                 <input [(ngModel)]="mdvpFo" type="range" id="mdvpFo" min="88" max="261" step="0.001"
                                     value="0" class="jv-input-range bg-red-700">
@@ -36,7 +38,8 @@
 
                         </div>
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <dt class="text-lg font-medium text-gray-500 sm:col-span-1">MDVP:Flo</dt>
+                            <app-tooltip [description]="'MDVP:Flo - Frecuencia fundamental vocal promedio'"
+                                [title]="'MDVP:Flo'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
                                 <input [(ngModel)]="mdvpFlo" type="range" id="mdvpFlo" min="0" max="240" step="0.001"
                                     value="0" class="jv-input-range">
@@ -44,7 +47,9 @@
                             <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{mdvpFlo}}</dt>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <dt class="text-lg font-medium text-gray-500 sm:col-span-1">Spread1</dt>
+                            <app-tooltip
+                                [description]="'Spread1 - Medida lineal de variación de frecuencia fundamental'"
+                                [title]="'Spread1'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
                                 <input [(ngModel)]="spread1" type="range" id="spread1" min="-8" max="1" step="0.001"
                                     value="0" class="jv-input-range">
@@ -65,8 +70,7 @@
         </div>
 
         <div class="">
-            <div
-                class="overflow-hidden bg-white shadow-lg sm:rounded-lg border border-slate-100 shadow-gray-500/20">
+            <div class="overflow-hidden bg-white shadow-lg sm:rounded-lg border border-slate-100 shadow-gray-500/20">
 
 
                 <div class="px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
@@ -76,7 +80,13 @@
                 </div>
                 <div class="bg-gray-100  px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Título: </dt>
-                    <dd class="text-lg font-medium text-gray-600 sm:col-span-5">{{title}} </dd>
+                    <dd class="text-lg font-medium text-gray-600 sm:col-span-4">{{title}} </dd>
+                    <dd class=" sm:col-span-1">
+                        <span class="inline-block bg-emerald-400 text-emerald-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-emerald-300/50" *ngIf="type == 'Recomendación'">{{type}}</span>
+                        <span class="inline-block bg-rose-400 text-rose-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-rose-300/50" *ngIf="type == 'Alerta'">{{type}}</span>
+                        <span class="inline-block bg-amber-400 text-amber-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-amber-300/50" *ngIf="type == 'Notificación'">{{type}}</span>
+                    </dd>
+
                 </div>
                 <div class="bg-gray-100  px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Mensaje: </dt>
