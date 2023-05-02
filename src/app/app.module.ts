@@ -11,6 +11,8 @@ import { PanelVoiceComponent } from './panel-voice/panel-voice.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PanelDrawingComponent } from './panel-drawing/panel-drawing.component';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
+import { NgTippyModule } from 'angular-tippy';
+
 // import { CardComponent } from './components/card/card.component';
 
 @NgModule({
@@ -22,12 +24,13 @@ import { TooltipComponent } from './components/tooltip/tooltip.component';
     PanelVoiceComponent,
     NavbarComponent,
     PanelDrawingComponent,
-    TooltipComponent
+    TooltipComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgTippyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
