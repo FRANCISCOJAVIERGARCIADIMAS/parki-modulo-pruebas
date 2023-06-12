@@ -3,7 +3,7 @@
 <body>
     <div class="container mx-auto max-w-7xl items-center justify-between py-10">
         <div class="pb-10">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Módulo de pruebas de voz</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Módulo de pruebas de trazos</h1>
         </div>
 
         <div class="py-2">
@@ -20,44 +20,25 @@
                         <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-1 sm:mt-0">
                                 <app-tooltip
-                                    [description]="'var 1 - description'"
-                                    [name]="'var 1'"></app-tooltip>
+                                    [description]="'res_eval_ondas - Resultado de la evaluacion de ondas'"
+                                    [name]="'res_eval_ondas'"></app-tooltip>
                             </dd>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input  type="range" id="ppe" min="50" max="300" step="001" value="0"
+                                <input [(ngModel)]="res_eval_ondas" type="range" id="res_eval_ondas" min="0" max="100" step="1" value="0"
                                     class="jv-input-range">
                             </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">0.01 </dt>
+                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{res_eval_ondas}} </dt>
 
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <app-tooltip [description]="'var 2 - description'"
-                                [name]="'var 2'"></app-tooltip>
+                            <app-tooltip [description]="'res_eval_esp - Resultado de la evaluacion de espirales'"
+                                [name]="'res_eval_esp'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input  type="range" id="mdvpFo" min="88" max="261" step="0.001"
+                                <input [(ngModel)]="res_eval_esp" type="range" id="res_eval_esp" min="0" max="100" step="1" value="0"
                                     value="0" class="jv-input-range bg-red-700">
                             </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">123</dt>
+                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{res_eval_esp}}</dt>
 
-                        </div>
-                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <app-tooltip [description]="'var 3 - description'"
-                                [name]="'var 3'"></app-tooltip>
-                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input  type="range" id="mdvpFlo" min="0" max="240" step="0.001"
-                                    value="0" class="jv-input-range">
-                            </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">1234</dt>
-                        </div>
-                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <app-tooltip
-                                [description]="'var 4 - description'"
-                                [name]="'var 4'"></app-tooltip>
-                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input  type="range" id="spread1" min="-8" max="1" step="0.001"
-                                    value="0" class="jv-input-range">
-                            </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">12345</dt>
                         </div>
 
                     </dl>
@@ -65,8 +46,9 @@
             </div>
         </div>
 
+
         <div class="px-4 py-10 sm:grid sm:gap-4 sm:px-6 justify-items-end">
-            <a  class="w-full inline-flex justify-center rounded-lg text-lg font-semibold py-2.5 px-9
+            <a (click)="pronosticarDrawing()" class="w-full inline-flex justify-center rounded-lg text-lg font-semibold py-2.5 px-9
                  bg-sky-600 text-white hover:bg-sky-500 -my-2.5 shadow-lg shadow-sky-500/50 ">
                 Evaluar variables
             </a>
@@ -78,28 +60,32 @@
 
                 <div class="px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Regla: </dt>
-                    <dd class="text-lg font-medium text-gray-600 sm:col-span-5">rule 1</dd>
+                    <dd class="text-lg font-normal text-gray-600 sm:col-span-5">
+                        <div>
+                            {{ regla }}
+                        </div>    
+                    </dd>
                     <!-- <dd class="text-lg font-medium text-gray-600 sm:col-span-4">Si variable1 <= 100 && variable2 <=80</dd> -->
                 </div>
                 <div class="bg-gray-100  px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Título: </dt>
-                    <dd class="text-lg font-medium text-gray-600 sm:col-span-4">title 1 </dd>
+                    <dd class="text-lg font-medium text-gray-600 sm:col-span-4">{{title}} </dd>
                     <dd class=" sm:col-span-1">
                         <span
-                            class="inline-block bg-emerald-400 text-emerald-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-emerald-300/50"
-                            >type 1</span>
-                        <!-- <span
-                            class="inline-block bg-rose-400 text-rose-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-rose-300/50"
+                            class="inline-block bg-emerald-400 text-emerald-900 text-xs px-4 py-1 rounded-full ures_eval_ondasrcase font-semibold tracking-wide shadow-lg shadow-emerald-300/50"
+                            *ngIf="type == 'Recomendación'">{{type}}</span>
+                        <span
+                            class="inline-block bg-rose-400 text-rose-900 text-xs px-4 py-1 rounded-full ures_eval_ondasrcase font-semibold tracking-wide shadow-lg shadow-rose-300/50"
                             *ngIf="type == 'Alerta'">{{type}}</span>
                         <span
-                            class="inline-block bg-amber-400 text-amber-900 text-xs px-4 py-1 rounded-full uppercase font-semibold tracking-wide shadow-lg shadow-amber-300/50"
-                            *ngIf="type == 'Notificación'">{{type}}</span> -->
+                            class="inline-block bg-amber-400 text-amber-900 text-xs px-4 py-1 rounded-full ures_eval_ondasrcase font-semibold tracking-wide shadow-lg shadow-amber-300/50"
+                            *ngIf="type == 'Notificación'">{{type}}</span>
                     </dd>
 
                 </div>
                 <div class="bg-gray-100  px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Mensaje: </dt>
-                    <dd class="text-lg font-medium text-gray-600 sm:col-span-5">msg 1</dd>
+                    <dd class="text-lg font-medium text-gray-600 sm:col-span-5">{{msg}} </dd>
                 </div>
             </div>
         </div>

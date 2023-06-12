@@ -24,18 +24,25 @@
                                     [name]="'PPE'"></app-tooltip>
                             </dd>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input [(ngModel)]="ppe" type="range" id="ppe" min="50" max="300" step="001" value="0"
-                                    class="jv-input-range">
+                                <input [(ngModel)]="ppe" type="range" id="ppe" min="0" max=".8000" step="0.000001" value="0.212100" class="jv-input-range">
                             </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">0.{{ppe}} </dt>
+                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{ppe}} </dt>
 
+                        </div> 
+                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
+                            <app-tooltip
+                                [description]="'Spread1 - Medida lineal de variación de frecuencia fundamental'"
+                                [name]="'Spread1'"></app-tooltip>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
+                                <input [(ngModel)]="spread1" type="range" id="spread1" min="-10" max="1" step="0.000001" value="-5.544872" class="jv-input-range">
+                            </dd>
+                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{spread1}}</dt>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                             <app-tooltip [description]="'MDVP:Fo - Frecuencia fundamental vocal mínima'"
                                 [name]="'MDVP:Fo'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input [(ngModel)]="mdvpFo" type="range" id="mdvpFo" min="88" max="261" step="0.001"
-                                    value="0" class="jv-input-range bg-red-700">
+                                <input [(ngModel)]="mdvpFo" type="range" id="mdvpFo" min="88" max="261" step="0.001" value="116.329" class="jv-input-range bg-red-700">
                             </dd>
                             <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{mdvpFo}}</dt>
 
@@ -44,20 +51,9 @@
                             <app-tooltip [description]="'MDVP:Flo - Frecuencia fundamental vocal promedio'"
                                 [name]="'MDVP:Flo'"></app-tooltip>
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input [(ngModel)]="mdvpFlo" type="range" id="mdvpFlo" min="0" max="240" step="0.001"
-                                    value="0" class="jv-input-range">
+                                <input [(ngModel)]="mdvpFlo" type="range" id="mdvpFlo" min="60" max="250" step="0.001" value="96.649" class="jv-input-range">
                             </dd>
                             <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{mdvpFlo}}</dt>
-                        </div>
-                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
-                            <app-tooltip
-                                [description]="'Spread1 - Medida lineal de variación de frecuencia fundamental'"
-                                [name]="'Spread1'"></app-tooltip>
-                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-5 sm:mt-0">
-                                <input [(ngModel)]="spread1" type="range" id="spread1" min="-8" max="1" step="0.001"
-                                    value="0" class="jv-input-range">
-                            </dd>
-                            <dt class="text-lg font-bold text-gray-500 sm:col-span-1">{{spread1}}</dt>
                         </div>
 
                     </dl>
@@ -65,8 +61,15 @@
             </div>
         </div>
 
-        <div class="px-4 py-10 sm:grid sm:gap-4 sm:px-6 justify-items-end">
+        <!-- <div class="px-4 py-10 sm:grid sm:gap-4 sm:px-6 justify-items-end">
             <a (click)="pronosticar()" class="w-full inline-flex justify-center rounded-lg text-lg font-semibold py-2.5 px-9
+                 bg-sky-600 text-white hover:bg-sky-500 -my-2.5 shadow-lg shadow-sky-500/50 ">
+                Evaluar variables
+            </a>
+        </div> -->
+
+        <div class="px-4 py-10 sm:grid sm:gap-4 sm:px-6 justify-items-end">
+            <a (click)="pronosticarVoice()" class="w-full inline-flex justify-center rounded-lg text-lg font-semibold py-2.5 px-9
                  bg-sky-600 text-white hover:bg-sky-500 -my-2.5 shadow-lg shadow-sky-500/50 ">
                 Evaluar variables
             </a>
@@ -78,7 +81,11 @@
 
                 <div class="px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
                     <dt class="text-lg font-medium text-gray-600 sm:col-span-1">Regla: </dt>
-                    <dd class="text-lg font-medium text-gray-600 sm:col-span-5">{{regla}}</dd>
+                    <dd class="text-lg font-normal text-gray-600 sm:col-span-5">
+                        <div *ngFor="let propiedad of regla">
+                            {{ propiedad }}
+                          </div>    
+                    </dd>
                     <!-- <dd class="text-lg font-medium text-gray-600 sm:col-span-4">Si variable1 <= 100 && variable2 <=80</dd> -->
                 </div>
                 <div class="bg-gray-100  px-4 py-5 sm:px-6 sm:grid sm:grid-cols-7 sm:gap-4 sm:px-6">
