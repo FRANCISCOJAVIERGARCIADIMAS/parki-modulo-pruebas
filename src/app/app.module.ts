@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { PanelDrawingComponent } from './panel-drawing/panel-drawing.component';
 import { TooltipComponent } from './components/tooltip/tooltip.component';
 import { NgTippyModule } from 'angular-tippy';
 import { CommaSeparatedPipe } from './comma-separated.pipe';
+import { NavbarResponsiveComponent } from './components/navbar-responsive/navbar-responsive.component';
+import { SelectPatientComponent } from './components/select-patient/select-patient.component';
 
 // import { CardComponent } from './components/card/card.component';
 
@@ -28,10 +30,13 @@ import { CommaSeparatedPipe } from './comma-separated.pipe';
     PanelDrawingComponent,
     TooltipComponent,
     CommaSeparatedPipe,
+    NavbarResponsiveComponent,
+    SelectPatientComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     NgTippyModule,
     HttpClientModule

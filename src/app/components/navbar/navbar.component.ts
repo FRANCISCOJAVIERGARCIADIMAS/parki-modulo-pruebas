@@ -8,7 +8,13 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
+  menuUser:boolean = false;
+
   constructor(private router: Router) { }
+
+  openMenuUser(){
+    this.menuUser = !this.menuUser;
+  }
 
   isActive(route: string): boolean {
     return this.router.url === route;
